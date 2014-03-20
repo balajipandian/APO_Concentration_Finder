@@ -35,27 +35,33 @@ Class Link extends CI_Model
 		return $query->result();
 	}
 	
-	/*function updateLinks($filename)
+	function returnAllLinksAsCSV()
 	{
-		// Clear table before updating table.
-		$sql = "TRUNCATE TABLE links";
-		$this->db->query($sql);
-		
-		
-		
-		$filepath = "upload/" . $filename;
-		$sql = "LOAD DATA LOCAL INFILE '{$filepath}' INTO TABLE links FIELDS TERMINATED BY ',' ENCLOSED BY '\"'LINES TERMINATED BY '\n'";
-		
-		try
-		{
-			$this->db->query($sql);
-			return 0;
+		$links = $this->returnAllLinks();
+
+		$output = "";
+
+		$rows_total = count($links);
+		$columns_total = count((array)$links[0]);
+
+		// Get Records from the table
+		foreach ($links as &$link) {
+			$linkArray = array_values((array)$link);
+			for ($i = 0; $i<$columns_total; $i++)
+			{
+				if ($i != $columns_total - 1) {
+					$output.= "\"" . $linkArray[$i]. "\"";
+					$output.=",";
+				}
+				else {
+					$output.="\"\"";
+				}
+			}
+			$output.="\n";
 		}
-		catch (Exception $e)
-		{
-			return 1;
-		}
-	}*/
+
+		return $output;
+	}
 	
 	function getAcademicDivisions()
 	{
