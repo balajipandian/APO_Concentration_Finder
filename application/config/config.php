@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://www.balajipandian.com/test/huit2';
+$config['base_url']	= '';
 
 /*
 |--------------------------------------------------------------------------
