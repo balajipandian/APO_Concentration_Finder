@@ -4,11 +4,11 @@
 
 <head>
 	<title>APO Concentration Search (alpha)</title>
-	<link href='http://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+	<link href='//fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="<?php echo asset_url() . 'css/style.css';?>">
 	<!-- jQuery CDN  -->
-	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	
 	<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
@@ -37,7 +37,7 @@
 	      			<h3>Academic Divisions</h3>
 	      			<div id="cat2Divisions" style="padding:0px;">
 		        		<?php foreach ($academicDivisions as $item): ?>
-						<p style="font-size:12px;"><input type="checkbox" class='cat2' name="<?=$item?>" value="<?=$item?>"><?=$item?></p>
+						<p style="font-size:12px;"><label><input type="checkbox" class='cat2' name="<?=$item?>" value="<?=$item?>"><?=$item?></label></p>
 						<?php endforeach; ?>
 	      			</div>
 				</div>
@@ -45,7 +45,7 @@
 	        		<h3>I Am Interested In...</h3>
 	        		<div id="cat2Likes" style="padding:0px;">
 			        	<?php foreach ($learningAspirations as $item): ?>
-		        		<p style="font-size:12px;"><input type="checkbox" class='cat2' name="<?=$item?>" value="<?=$item?>"><?=$item?></p>
+		        		<p style="font-size:12px;"><label><input type="checkbox" class='cat2' name="<?=$item?>" value="<?=$item?>"><?=$item?></label></p>
 		        		<?php endforeach; ?>
 	        		</div>
 				</div>
@@ -53,7 +53,7 @@
 	        		<h3>Future Aspirations</h3>
 	        		<div id="cat2Careers" style="padding:0px;">
 			        	<?php foreach ($futureAspirations as $item): ?>
-		        		<p style="font-size:12px;"><input type="checkbox" class='cat2' name="<?=$item?>" value="<?=$item?>"><?=$item?></p>
+		        		<p style="font-size:12px;"><label><input type="checkbox" class='cat2' name="<?=$item?>" value="<?=$item?>"><?=$item?></label></p>
 		        		<?php endforeach; ?>
 	        		</div>
 				</div>

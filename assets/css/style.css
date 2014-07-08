@@ -75,6 +75,7 @@ tr {
 td {
 	padding: 8px 10px 8px 10px;
 	position: relative;
+	display: block;
 }
 
 hr {
