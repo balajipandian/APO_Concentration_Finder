@@ -4,11 +4,11 @@
 
 <head>
 	<title>APO Concentration Search (alpha)</title>
-	<link href='http://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+	<link href='//fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="<?php echo asset_url() . 'css/style.css';?>">
 	<!-- jQuery CDN  -->
-	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	
 	<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
@@ -31,33 +31,48 @@
         	<img src = "<?php echo asset_url() . 'img/my_harvard_pic.png';?>" alt="" />
         </div>
 
+		<?php 
+		$divisions = array(
+			array(
+				'title' => 'Academic Dvisions', 
+				'items' => $academicDivisions,
+				'cat1_id' => 'cat1Divisions', 
+				'cat2_id' => 'cat2Divisions'
+			), array(
+				'title' => 'I Am Interested In...', 
+				'items' => $learningAspirations,
+				'cat1_id' => 'cat1Likes', 
+				'cat2_id' => 'cat2Likes'
+			),
+			array(
+				'title' => 'Future Aspirations', 
+				'items' => $futureAspirations,
+				'cat1_id' => 'cat1Careers', 
+				'cat2_id' => 'cat2Careers'
+			)
+		); 
+		?>
+
 	    <div class="main">
 			<div id='checkboxes'>
-				<div id="cat1Divisions" class='cat1'>
-	      			<h3>Academic Divisions</h3>
-	      			<div id="cat2Divisions" style="padding:0px;">
-		        		<?php foreach ($academicDivisions as $item): ?>
-						<p style="font-size:12px;"><input type="checkbox" class='cat2' name="<?=$item?>" value="<?=$item?>"><?=$item?></p>
+				<?php foreach($divisions as $division): ?>
+				<div id="<?= $division['cat1_id']; ?>">
+					<h3 class="cat1"><?= $division['title']; ?></h3>
+					<ul id="<?= $division['cat2_id']; ?>" class="cat2">
+		        		<?php foreach($division['items'] as $item): ?>
+						<li>
+							<label>
+								<input type="checkbox" name="<?=$item?>" value="<?=$item?>">
+								<span><?=$item?></span>
+							</label>
+							<br class="clear" />
+						</li>
 						<?php endforeach; ?>
-	      			</div>
+					</ul>
 				</div>
-				<div id="cat1Likes" class='cat1'>
-	        		<h3>I Am Interested In...</h3>
-	        		<div id="cat2Likes" style="padding:0px;">
-			        	<?php foreach ($learningAspirations as $item): ?>
-		        		<p style="font-size:12px;"><input type="checkbox" class='cat2' name="<?=$item?>" value="<?=$item?>"><?=$item?></p>
-		        		<?php endforeach; ?>
-	        		</div>
-				</div>
-				<div id="cat1Careers" class='cat1'>
-	        		<h3>Future Aspirations</h3>
-	        		<div id="cat2Careers" style="padding:0px;">
-			        	<?php foreach ($futureAspirations as $item): ?>
-		        		<p style="font-size:12px;"><input type="checkbox" class='cat2' name="<?=$item?>" value="<?=$item?>"><?=$item?></p>
-		        		<?php endforeach; ?>
-	        		</div>
-				</div>
-	        </div>
+				<?php endforeach; ?>
+			</div>
+
 		    <div id='resultsWrapper'>
 		    	<div id='text_search'>
 			    	 <p style="margin-top:10px;">&nbsp;&nbsp;<b>Your Results Sorted Below:</b> &nbsp;</p>
@@ -77,7 +92,7 @@
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-49201724-1', 'balajipandian.com');
+  ga('create', 'UA-46595028-4', 'harvard.edu');
   ga('send', 'pageview');
 
   </script>
