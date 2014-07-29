@@ -7,37 +7,67 @@ body{
 	margin-bottom: 20px;
 }
 
-#container{
-   text-align:left;
-   width:1440px;
-   margin: 0 auto;
-}
+#container{}
 
 #checkboxes{
 	overflow-y: auto;
-	float:left;
+	position: absolute;
+	left: 0;
     vertical-align:text-center;
     background:#E8E8E8;
     width:220px;
     height:600px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
     text-align: left;
+}
+ul.cat2 {
+	list-style: none;
+	margin: 0 !important;
+	padding: 0 !important;
+	width: 100%;
+	border: 0;
+	font-size: 12px;
+	font-weight: bold;
+}
+ul.cat2 > li {
+	font-size: 12px;
+	margin: 5px 5px 10px 15px;
+}
+ul.cat2 .clear {
+	clear: both;
+	height: 0;
+}
+ul.cat2 label {
+	margin: 0;
+	padding: 0;
+}
+ul.cat2 input {
+	float: left;
+	width: 20px;
+	margin: 0;
+}
+ul.cat2 input+span {
+	float: left;
+	text-align: left;
+	width: 165px;
+}
+#resultsWrapper {
+	position: absolute;
+	left: 230px;
+	right: 0px;
+	min-width: 800px;
 }
 
 #results{
 	overflow-y: auto;
 	margin-bottom: 20px;
-    float:right;
     background:#E8E8E8;
-    width:1200px;
     height:600px;
 }
 
 #text_search{
 	overflow-y: auto;
-	float:right;
-	width: 1200px;
 	height: 40px;
 	background:#C8C8C8;
 }
@@ -88,7 +118,3 @@ hr {
 	font-weight: bold;
 }
 
-.cat2 {
-	margin-left: 15px !important;
-	margin-right: 10px !important;
-}
