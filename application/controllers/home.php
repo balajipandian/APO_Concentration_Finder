@@ -63,7 +63,7 @@ class Home extends CI_Controller {
 									$link->score = $link->score + 1;
 							}
 						}
-	
+
 					}
 				}
 			}
@@ -83,76 +83,41 @@ class Home extends CI_Controller {
 
 	function getAcademicDivisionsUniqueList()
 	{	
-		$responseList = $this->link->getAcademicDivisions();
-		
-		$categoryArray = array();
-		
-		if (empty($responseList))
-			$categoryArray;
-			
-		foreach ($responseList as $response)
-		{
-			$responseElementArray = json_decode($response->academicDivisions);
-			
-			if (empty($responseElementArray))
-				continue;
-
-
-			foreach ($responseElementArray as $element)
-				array_push($categoryArray, $element);
-		}
-		
-		
-		return array_unique($categoryArray);
+		return $this->getUniqueCategoryList($this->link->getAcademicDivision());
 	}
 	
 	function getLearningAspirationUniqueList()
 	{
-		$responseList = $this->link->getLearningAspirations();
-		
-		$categoryArray = array();
-		
-		if (empty($responseList))
-			$categoryArray;
-			
-		foreach ($responseList as $response)
-		{
-			$responseElementArray = json_decode($response->learningAspirations);
-			
-			if (empty($responseElementArray))
-				continue;
-				
-			foreach ($responseElementArray as $element)
-				array_push($categoryArray, $element);
-		}
-		
-		
-		return array_unique($categoryArray);
+		return $this->getUniqueCategoryList($this->link->getLearningAspirations());
 	}
 	
 	function getFutureAspirationsUniqueList()
 	{
-		$responseList = $this->link->getFutureAspirations();
-		
-		$categoryArray = array();
-		
-		if (empty($responseList))
-			$categoryArray;
+		return $this->getUniqueCategoryList($this->link->getFutureAspirations());
+	}
 
+	function getUniqueCategoryList($responseList) {
+		$categoryArray = array();
+		if (empty($responseList)) 
+		{
+			return $categoryArray;
+		}
 
 		foreach ($responseList as $response)
 		{
-			$responseElementArray = json_decode($response->futureAspirations);
-			
-			if (empty($responseElementArray))
+			$responseElementArray = json_decode($response->category);
+			if (empty($responseElementArray)) 
+			{
 				continue;
-
-			foreach ($responseElementArray as $element)
-				array_push($categoryArray, $element);
+			}
+			
+			foreach ($responseElementArray as $element) 
+			{
+				$categoryArray[] = $element;
+			}
 		}
-		
-		
-		return array_unique($categoryArray);
+			
+		return natcasesort(array_unique($categoryArray));
 	}
 	
 	function index()
